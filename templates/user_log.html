@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>
+    user login
+</title>
+{% endblock %}
+
+
+{% block body %}
+<div class="container">
+    {% for error in errors %}
+        <div class="alert alert-primary" role="alert">
+            {{error}}
+        </div>
+    {% endfor %}   
+    {% if msg %}
+    <div class="alert alert-primary" role="alert">
+        {{msg}}
+    </div>
+    {% endif %}
+
+    <form method="post">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input type="email" required class="form-control" name="email" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input type="password" required class="form-control" name="password">
+        </div>
+        <button type="submit" class="btn btn-primary">login</button>
+    </form>
+</div>
+
+{% endblock body %}

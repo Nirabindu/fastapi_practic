@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}
+<title>Welcome Home</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    {% if msg %}
+    <div class="alert alert-primary" role="alert">
+        {{msg}}
+      </div>
+    {% endif %}  
+    <div class="row">
+        {% for blog in blogs %}
+        <!--just passing all blog data in blogs one by one -->
+        <div class="col">
+            {% with blogs = blog %}
+            {% include 'card.html' %}
+            {% endwith %}
+        </div>
+
+
+        {% endfor %}
+    </div>
+
+</div>
+{% endblock body %}

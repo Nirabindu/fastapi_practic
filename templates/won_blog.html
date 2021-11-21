@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>my blog post</title>
+{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h1>blog posted by me</h1>
+    {% if msg %}
+    <div class="alert alert-primary" role="alert">
+        {{msg}}
+    </div>
+    {% endif %}
+    <div class="row">
+        {% for blog in blogs %}
+        <!--just passing all blog data in blogs one by one -->
+        <div class="col">
+            {% with blogs = blog %}
+            {% include 'card_won.html' %}
+
+            {% endwith %}
+        </div>
+
+
+        {% endfor %}
+    </div>
+
+    {% endblock body %}

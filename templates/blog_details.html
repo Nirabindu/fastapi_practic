@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>blog details</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Blogs Details</h1>
+    <table class="table">
+
+        <tbody>
+            <tr>
+                <th scope="row">title</th>
+                <td>{{blog_details.title}}</td>
+
+
+            </tr>
+            <tr>
+                <th scope="row">Description</th>
+                <td>{{blog_details.description}}</td>
+            </tr>
+            <tr>
+                <th scope="row">date posted</th>
+                <td>{{blog_details.date}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Posted by</th>
+                <td>{{ user.email }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock body %}

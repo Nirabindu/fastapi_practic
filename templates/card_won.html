@@ -1,0 +1,16 @@
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{blogs.title}}</h5>
+    <p class="card-text">{{blogs.description[:5]}}</p>
+    <a href="/details/{{blogs.blog_id}}" class="btn btn-primary">details</a>
+    <button type="button" class="btn btn-outline-danger" onclick="del_blog({{blogs.blog_id}})">Delete</button>
+    <a href="/update_blog/{{blogs.blog_id}}"><button type="button" class="btn btn-outline-danger">update</button></a>
+
+  </div>
+</div>
+<!-- java script function to call apis -->
+<script>
+  function del_blog(id) {
+    fetch('/delete_blog/' + id, { method: 'DELETE' })
+  }
+</script>

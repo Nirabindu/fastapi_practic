@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>create blog</title>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+  <h1>update your Blog</h1>
+  {% for errors in errors %}
+  <div class="alert alert-primary" role="alert">
+    {{errors}}
+  </div>
+  {% endfor %}
+  <div id="result" class="text-success"></div>
+  <form>
+    <div class="mb-3">
+      <label class="form-label">blog title</label>
+      <input type="text" required class="form-control" name="title" id='title' value={{blogs.title}}>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">description</label>
+      <textarea class="form-control" required id='description' name="description">{{blogs.description}}</textarea>
+    </div>
+
+  </form>
+  <button type="submit" class="btn btn-primary" onclick="update_blog({{ blogs.blog_id}})">Update</button>
+</div>
+{% endblock body %}
+
+{% block script %}
+<script>
+  function update_blog(id) {
+    var data = {}
+    data["title"] = document.getElementById("title").value
+    data["description"] = document.getElementById("description").value
+    fetch("/update_blog/" + id, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
+      .then(response => response.json())
+      .then(data => document.getElementById("result").innerHTML = data.msg)
+  }
+
+</script>
+{% endblock %}
